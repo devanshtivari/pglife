@@ -11,12 +11,12 @@ $sql_1 = "SELECT *, p.id AS property_id, p.name AS property_name, c.name AS city
             WHERE p.id = $property_id";
 $result_1 = mysqli_query($conn, $sql_1);
 if (!$result_1) {
-    echo "Something went wrong!";
+    echo "Something went wrong! in first statment";
     return;
 }
 $property = mysqli_fetch_assoc($result_1);
 if (!$property) {
-    echo "Something went wrong!";
+    echo "Something went wrong! in second statment";
     return;
 }
 
@@ -24,7 +24,7 @@ if (!$property) {
 $sql_2 = "SELECT * FROM testimonials WHERE property_id = $property_id";
 $result_2 = mysqli_query($conn, $sql_2);
 if (!$result_2) {
-    echo "Something went wrong!";
+    echo "Something went wrong! in third statment";
     return;
 }
 $testimonials = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
@@ -35,8 +35,8 @@ $sql_3 = "SELECT a.*
             INNER JOIN properties_amenities pa ON a.id = pa.amenity_id
             WHERE pa.property_id = $property_id";
 $result_3 = mysqli_query($conn, $sql_3);
-if (!$result_3) {
-    echo "Something went wrong!";
+if (!$result_3) {   
+    echo "Something went wrong! in fourth statment";
     return;
 }
 $amenities = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
@@ -45,7 +45,7 @@ $amenities = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
 $sql_4 = "SELECT * FROM interested_users_properties WHERE property_id = $property_id";
 $result_4 = mysqli_query($conn, $sql_4);
 if (!$result_4) {
-    echo "Something went wrong!";
+    echo "Something went wrong! in fifth statment";
     return;
 }
 $interested_users = mysqli_fetch_all($result_4, MYSQLI_ASSOC);

@@ -8,7 +8,7 @@ $city_name = $_GET["city"];
 $sql_1 = "SELECT * FROM cities WHERE name = '$city_name'";
 $result_1 = mysqli_query($conn, $sql_1);
 if (!$result_1) {
-    echo "Something went wrong!";
+    echo "Something went wrong! in this statment";
     return;
 }
 $city = mysqli_fetch_assoc($result_1);
@@ -17,6 +17,7 @@ if (!$city) {
     return;
 }
 $city_id = $city['id'];
+echo $city_id;
 
 
 $sql_2 = "SELECT * FROM properties WHERE city_id = $city_id";
@@ -27,14 +28,13 @@ if (!$result_2) {
 }
 $properties = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
 
-
 $sql_3 = "SELECT * 
             FROM interested_users_properties iup
             INNER JOIN properties p ON iup.property_id = p.id
             WHERE p.city_id = $city_id";
 $result_3 = mysqli_query($conn, $sql_3);
 if (!$result_3) {
-    echo "Something went wrong!";
+    echo "Something went wrong! in the statment";
     return;
 }
 $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);

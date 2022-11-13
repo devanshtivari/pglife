@@ -21,6 +21,7 @@ window.addEventListener("load", function () {
     });
 
     var login_form = document.getElementById("login-form");
+    console.log(FormData(login_form));
     login_form.addEventListener("submit", function (event) {
         var XHR = new XMLHttpRequest();
         var form_data = new FormData(login_form);
@@ -56,8 +57,10 @@ var signup_success = function (event) {
 
 var login_success = function (event) {
     document.getElementById("loading").style.display = 'none';
+    console.log("login was successfull");
 
     var response = JSON.parse(event.target.responseText);
+    console.log(response);
     if (response.success) {
         location.reload();
     } else {

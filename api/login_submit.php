@@ -18,7 +18,12 @@ $row_count = mysqli_num_rows($result);
 if ($row_count == 0) {
     
     $response = array("success" => false, "message" => "Login failed! Invalid email or password.");
-    echo json_encode($response);
+    echo
+    "
+    <script>
+        console.log('login successful');
+    </script>
+";
     
     return;
 }
@@ -29,5 +34,10 @@ $_SESSION['full_name'] = $row['full_name'];
 $_SESSION['email'] = $row['email'];
 
 $response = array("success" => true, "message" => "Login successful!");
-echo json_encode($response);
+echo
+"
+    <script>
+        console.log('login successful');
+    </script>
+";
 mysqli_close($conn);
